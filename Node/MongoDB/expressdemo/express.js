@@ -2,6 +2,10 @@ const express = require("express");
 const app = express();
 const food = ["kabab", "nihari", "daal rice"]
 
+//to handle json type api calls
+app.use(express.json());
+
+
 //read or fetch requests
 app.get("/", (req,res)=>{
     //now we send response
@@ -20,6 +24,25 @@ app.get("/api/food/:id", (req,res) => {
 
     // if product found
     res.send(food[req.params.id]);
+});
+
+//Put - update request
+app.put("/api/food/:id", (req,res) => {
+    //json handling required for json body
+    console.log(req.body);
+    res.send(food[req.params.id] = req.body.name);
+});
+//delete request
+app.delete("/api/food/:id", (req,res) => {
+    //1st is starting index, 2nd is no. of records to be deleted. here the only one itself
+  food.splice(req.params.id,1);
+    res.send(food);
+});
+//Post - create request
+app.post("/api/food", (req,res) => {
+    //1st is starting index, 2nd is no. of records to be deleted. here the only one itself
+  food.push(req.body.name);
+    res.send(food);
 });
 
 
