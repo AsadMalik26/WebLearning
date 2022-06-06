@@ -5,20 +5,21 @@ const food = ["kabab", "nihari", "daal rice"];
 //to handle json type api calls
 app.use(express.json());
 
+
 const mongoose = require("mongoose");
 
+
 mongoose
-  .connect("mongodb://localhost:27017/TestDB", {
+  .connect('mongodb://127.0.0.1/testdb', {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
-  .then(() => {
+  .then((ok) => {
     console.log("Connected with mongodb");
   })
   .catch(() => {
     console.log("Error while connecting with database");
   });
-
 
 //read or fetch requests
 app.get("/", (req, res) => {
