@@ -1,13 +1,11 @@
 const express = require("express");
 const app = express();
-const food = ["kabab", "nihari", "daal rice"];
-
+const mongoose = require("mongoose");
 //to handle json type api calls
 app.use(express.json());
+const food = ["kabab", "nihari", "daal rice"];
 
-
-const mongoose = require("mongoose");
-
+const {creatItem} = require("./modelOperations");
 
 mongoose
   .connect('mongodb://127.0.0.1/testdb', {
@@ -21,6 +19,9 @@ mongoose
     console.log("Error while connecting with database");
   });
 
+
+
+  
 //read or fetch requests
 app.get("/", (req, res) => {
   //now we send response
