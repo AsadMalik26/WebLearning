@@ -7,10 +7,14 @@ const mongoose = require("mongoose");
 });
  */
 
-const testSchema = mongoose.Schema({
-    name:String
+const cashSchema = mongoose.Schema({
+    title:String,
+    price:float,
+    description:{
+      type:String, default:null,
+    }
 });
 
-const testModel = mongoose.model("testModel", testSchema);
+const cashModel = mongoose.model("cashModel", testSchema);
 
-module.exports = testModel;
+module.exports = cashModel;
