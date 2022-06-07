@@ -7,9 +7,10 @@ $(function () {
     var id = $("#updateID").val();
     var title = $("#updateTitle").val();
     var body = $("#updateBody").val();
+    var price = $("#updatePrice").val();
     $.ajax({
-      url: "https://usman-recipes.herokuapp.com/api/recipes/" + id,
-      data: { title, body },
+      url: "http://localhost:3030/api/expense/" + id,
+      data: { title, price, body },
       method: "PUT",
       success: function () {
         // console.log(response);
@@ -26,7 +27,7 @@ function handleUpdate() {
   var parentDiv = btn.closest(".recipie");
   let id = parentDiv.attr("data-id");
   $.get(
-    "https://usman-recipes.herokuapp.com/api/recipes/" + id,
+    "http://localhost:3030/api/expense/" + id,
     function (response) {
       $("#updateID").val(response._id);
       $("#updateTitle").val(response.title);
@@ -40,7 +41,7 @@ function addRecipie() {
   var title = $("#title").val();
   var body = $("#body").val();
   $.ajax({
-    url: "https://usman-recipes.herokuapp.com/api/recipes",
+    url: "http://localhost:3030/api/expense",
     method: "POST",
     data: { title, body },
     success: function (response) {
@@ -56,7 +57,7 @@ function handleDelete() {
   let id = parentDiv.attr("data-id");
   console.log(id);
   $.ajax({
-    url: "https://usman-recipes.herokuapp.com/api/recipes/" + id,
+    url: "http://localhost:3030/api/expense/" + id,
     method: "DELETE",
     error: function () {
       var recipie = $("#recipie");
@@ -72,7 +73,7 @@ function handleDelete() {
 } //end handleDelete()
 function loadRecipie() {
   $.ajax({
-    url: "https://usman-recipes.herokuapp.com/api/recipes",
+    url: "http://localhost:3030/",
     method: "GET",
     success: function (response) {
       console.log(response);
@@ -81,7 +82,7 @@ function loadRecipie() {
       for (var i = 0; i < response.length; i++) {
         var rec = response[i];
         recipie.append(
-          `<div class="recipie" data-id="${rec._id}"><h3>${rec.title}</h3><p><button class="btn btn-danger btn-sm float-right">Delete</button><button class="ml-3 btn btn-warning btn-sm float-right">Edit</button>${rec.body}</p></div>`
+          `<div class="recipie" data-id="${rec._id}"><h3>${rec.title}</h3><h5>Rs. ${rec.price}</h5><p><button class="btn btn-danger btn-sm float-right">Delete</button><button class="ml-3 btn btn-warning btn-sm float-right">Edit</button>${rec.description}</p></div>`
         );
       }
     },

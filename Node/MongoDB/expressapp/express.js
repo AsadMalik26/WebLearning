@@ -1,10 +1,12 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
+const cors = require("cors");
+
 //to handle json type api calls
 app.use(express.json());
 const food = ["kabab", "nihari", "daal rice"];
-
+app.use(cors());
 const { createEntry, getAllEntries, getOneEntry, deleteEntry, updateEntry } = require("./modelOperations");
 
 mongoose
