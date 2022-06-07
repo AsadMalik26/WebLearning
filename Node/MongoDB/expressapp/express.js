@@ -12,8 +12,10 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
-  .then((ok) => {
+  .then(() => {
     console.log("Connected with mongodb");
+    /* await creatItem("Test create"); 
+    console.log(food); */
   })
   .catch(() => {
     console.log("Error while connecting with database");
