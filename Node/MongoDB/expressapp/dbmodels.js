@@ -9,12 +9,12 @@ const mongoose = require("mongoose");
 
 const cashSchema = mongoose.Schema({
     title:String,
-    price:float,
+    price:Number,
     description:{
       type:String, default:null,
     }
 });
 
-const cashModel = mongoose.model("cashModel", testSchema);
+const cashModel = mongoose.model("cashModel", cashSchema);
 
 module.exports = cashModel;

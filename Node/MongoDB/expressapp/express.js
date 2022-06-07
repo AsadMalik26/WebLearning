@@ -5,17 +5,19 @@ const mongoose = require("mongoose");
 app.use(express.json());
 const food = ["kabab", "nihari", "daal rice"];
 
-const {creatItem} = require("./modelOperations");
+const { createEntry, getAllEntries, getOneEntry, deleteEntry, updateEntry } = require("./modelOperations");
 
 mongoose
   .connect('mongodb://127.0.0.1/testdb', {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
-  .then(() => {
+  .then(async () => {
     console.log("Connected with mongodb");
-    /* await creatItem("Test create"); 
-    console.log(food); */
+    /* let e = await createEntry("Testing for Asim",300,"abcdefg"); 
+    console.log(e); */
+    /* let e = await deleteEntry("629fa3acac6ba6aa33e50554");
+    console.log(e); */
   })
   .catch(() => {
     console.log("Error while connecting with database");
@@ -23,12 +25,11 @@ mongoose
 
 
 
-  
+
 //read or fetch requests
-app.get("/", (req, res) => {
-  //now we send response
-  res.send("Hello this is express");
-  // now we no need to write and end for response
+app.get("/", async (req, res) => {
+   let e = await getAllEntries();
+   res.send(e);
 });
 
 app.get("/api/food", (req, res) => {
