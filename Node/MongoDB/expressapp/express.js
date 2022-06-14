@@ -7,12 +7,18 @@ const cors = require("cors");
 app.use(express.json());
 const food = ["kabab", "nihari", "daal rice"];
 app.use(cors());
-const { createEntry, getAllEntries, getOneEntry, deleteEntry, updateEntry } = require("./modelOperations");
+const {
+  createEntry,
+  getAllEntries,
+  getOneEntry,
+  deleteEntry,
+  updateEntry,
+} = require("./modelOperations");
 
 mongoose
-  .connect('mongodb://127.0.0.1/testdb', {
+  .connect("mongodb://127.0.0.1/testdb", {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
   })
   .then(async () => {
     console.log("Connected with mongodb");
@@ -25,33 +31,48 @@ mongoose
     console.log("Error while connecting with database");
   });
 
-
-
-
 //read or fetch requests
 app.get("/", async (req, res) => {
-   let e = await getAllEntries();
-   res.send(e);
+  let e = await getAllEntries();
+  res.send(e);
+});
+app.get("/api/expense/", async (req, res) => {
+  let e = await getAllEntries();
+  res.send(e);
 });
 
 app.get("/api/food", (req, res) => {
   res.send(food);
 });
 //fetch single product
-app.get("/api/food/:id", (req, res) => {
+app.get("/api/expense/:id", async (req, res) => {
   //if product not found then answer it
-  if (!food[req.params.id]) res.status(400).send("food item not found");
+  //if (!food[req.params.id]) res.status(400).send("food item not found");
   //status(400) is bad request code
 
   // if product found
-  res.send(food[req.params.id]);
+  //res.send(food[req.params.id]);
+
+  let e = await getOneEntry(req.params.id);
+  res.send(e);
 });
 
 //Put - update request
-app.put("/api/food/:id", (req, res) => {
+app.put("/api/expense/:id", (req, res) => {
   //json handling required for json body
+  //console.log(req.body);
+  //res.send((food[req.params.id] = req.body.name));
+  console.log("Recvied save request");
   console.log(req.body);
-  res.send((food[req.params.id] = req.body.name));
+  //console.log(req);
+
+  let entry = updateEntry(
+    req.params.id,
+    req.body.title,
+    req.body.price,
+    req.body.description
+  );
+  res.send(req.body);
 });
 //delete request
 app.delete("/api/food/:id", (req, res) => {

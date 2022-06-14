@@ -3,14 +3,17 @@ $(function () {
   $("#recipie").on("click", ".btn-danger", handleDelete);
   $("#recipie").on("click", ".btn-warning", handleUpdate);
   $("#addBtn").click(addRecipie);
+
   $("#updateSave").click(function () {
+    console.log("Update Save clicked");
     var id = $("#updateID").val();
     var title = $("#updateTitle").val();
-    var body = $("#updateBody").val();
     var price = $("#updatePrice").val();
+    var description = $("#updateBody").val();
+
     $.ajax({
       url: "http://localhost:3030/api/expense/" + id,
-      data: { title, price, body },
+      data: { title: title, price: price, description: description },
       method: "PUT",
       success: function () {
         // console.log(response);
@@ -22,19 +25,17 @@ $(function () {
 });
 
 function handleUpdate() {
-  // console.log("edit clicked");
+  console.log("edit clicked");
   var btn = $(this);
   var parentDiv = btn.closest(".recipie");
   let id = parentDiv.attr("data-id");
-  $.get(
-    "http://localhost:3030/api/expense/" + id,
-    function (response) {
-      $("#updateID").val(response._id);
-      $("#updateTitle").val(response.title);
-      $("#updateBody").val(response.body);
-      $("#updateModal").modal("show");
-    }
-  );
+  $.get("http://localhost:3030/api/expense/" + id, function (response) {
+    $("#updateID").val(response._id);
+    $("#updateTitle").val(response.title);
+    $("#updatePrice").val(response.price);
+    $("#updateBody").val(response.description);
+    $("#updateModal").modal("show");
+  });
 } //end handleUpdate()
 
 function addRecipie() {
