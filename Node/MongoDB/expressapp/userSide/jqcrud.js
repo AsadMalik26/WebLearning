@@ -10,11 +10,17 @@ $(function () {
     var title = $("#updateTitle").val();
     var price = $("#updatePrice").val();
     var description = $("#updateBody").val();
+    let obj = {
+      title: title,
+      price: price,
+      description: description,
+    };
 
     $.ajax({
       url: "http://localhost:3030/api/expense/" + id,
-      data: { title: title, price: price, description: description },
       method: "PUT",
+      data: obj,
+      type: JSON,
       success: function () {
         // console.log(response);
         loadRecipie();
@@ -39,16 +45,28 @@ function handleUpdate() {
 } //end handleUpdate()
 
 function addRecipie() {
-  var title = $("#title").val();
-  var body = $("#body").val();
+  var title = $("#titleData").val();
+  var price = $("#pricedData").val();
+  var description = $("#descriptionData").val();
+
+  let data = {
+    title: title,
+    price: price,
+    description: description,
+  };
+  console.log(data);
   $.ajax({
     url: "http://localhost:3030/api/expense",
     method: "POST",
-    data: { title, body },
+    data: data,
+    type: JSON,
     success: function (response) {
       console.log(response);
       loadRecipie();
       $("#addRecipie").modal("hide");
+    },
+    error: function (xhr) {
+      console.log(xhr);
     },
   });
 } //end addRecipie()
@@ -74,7 +92,7 @@ function handleDelete() {
 } //end handleDelete()
 function loadRecipie() {
   $.ajax({
-    url: "http://localhost:3030/",
+    url: "http://localhost:3030/api/expense",
     method: "GET",
     success: function (response) {
       console.log(response);

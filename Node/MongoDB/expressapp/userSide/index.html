@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.go
+  ogleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="./jquery-3.6.0.min.js"></script>
     <script src="./popper.min.js"></script>
     <script src="./bootstrap.min.js"></script>
@@ -11,6 +13,7 @@
 
     <link rel="stylesheet" href="./bootstrap.min.css" />
     <link rel="stylesheet" href="./jqstyles.css" />
+
     <title>Document</title>
   </head>
 
@@ -139,7 +142,7 @@
                 type="text"
                 class="form-control"
                 name="title"
-                id="title"
+                id="titleData"
                 aria-describedby="titleHelp"
                 placeholder="Title of the Entry"
               />
@@ -153,7 +156,7 @@
                 type="number"
                 class="form-control"
                 name="price"
-                id="price"
+                id="pricedData"
                 aria-describedby="priceHelp"
                 placeholder="price of the Entry"
               />
@@ -162,16 +165,16 @@
               >
             </div>
             <div class="form-group">
-              <label for="body">Entry Description</label>
+              <label for="descriptionData">Entry Description</label>
               <input
                 type="text"
                 class="form-control"
-                name="body"
-                id="body"
-                aria-describedby="bodyHelp"
-                placeholder="Enter the description/body"
+                name=""
+                id="descriptionData"
+                aria-describedby="priceHelp"
+                placeholder="enter here"
               />
-              <small id="bodyHelp" class="form-text text-muted"
+              <small id="descriptionDataHelp" class="form-text text-muted"
                 >Enter Description</small
               >
             </div>
