@@ -64,6 +64,9 @@ function addRecipie() {
       console.log(response);
       loadRecipie();
       $("#addRecipie").modal("hide");
+      $("#titleData").val("");
+      $("#pricedData").val("");
+      $("#descriptionData").val("");
     },
     error: function (xhr) {
       console.log(xhr);
