@@ -4,5 +4,21 @@ body {
 }
 
 a {
-  color: #00B7FF;
+  color: #ff0000;
+}
+
+h1{
+  color: white;
+  background: rgb(113, 248, 136);
+  text-align: center;
+}
+
+#menu {
+  text-align: center;
+}
+
+#menu li{
+  display: inline;
+  margin: 10px;
+  list-style-type: none;
 }
