@@ -10,7 +10,7 @@ app.use(express.urlencoded());
 const food = ["kabab", "nihari", "daal rice"];
 app.use(cors());
 const {
-  createEntry,
+  createEntry,  
   getAllEntries,
   getOneEntry,
   deleteEntry,
