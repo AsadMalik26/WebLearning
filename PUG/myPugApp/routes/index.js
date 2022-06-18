@@ -8,10 +8,10 @@ router.get("/", function (req, res, next) {
   // res.send("<h1> Hello Asad </h1>");
   res.render("index.pug", { title: "Home Page" });
 });
-router.get("/Products", function (req, res, next) {
+/* router.get("/Products", function (req, res, next) {
   res.render("products");
   // res.send("<h1> Hello Products </h1>");
-});
+}); */
 router.get("/contactus", function (req, res, next) {
   res.render("contactus");
 });
