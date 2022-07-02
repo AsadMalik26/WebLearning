@@ -98,4 +98,6 @@ app.delete("/api/expense/:id", async (req, res) => {
   res.send(entry);
 });
 
-app.listen(3030);
+app.listen(3030, () => {
+  console.log("Server Started");
+});
