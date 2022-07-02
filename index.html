@@ -17,13 +17,17 @@
       crossorigin="anonymous"
     />
   </head>
-  <body>
+  <body onload="myFunction()">
     <div class="text-center p-5 m-5">
       <a href="./Node/MongoDB/expressapp/userSide/index.html"
         ><button class="btn btn-primary col-3">
           API Client - It uses backend API using Express + Nodejs + Mongodb
         </button></a
       >
+      <!--  <a href="./PUG/myPugApp/bin/index.html"
+        ><button class="btn btn-primary col-3">PUG - Server Side</button></a
+      > -->
+      <!-- Above button is not working well - fix it later -->
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -42,5 +46,11 @@
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"
     ></script>
+
+    <script>
+      function myFunction() {
+        nodemon: /PUG/myPugApp/bin/www;
+      }
+    </script>
   </body>
 </html>
