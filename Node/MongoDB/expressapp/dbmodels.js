@@ -8,11 +8,12 @@ const mongoose = require("mongoose");
  */
 
 const cashSchema = mongoose.Schema({
-    title:String,
-    price:Number,
-    description:{
-      type:String, default:null,
-    }
+  title: String,
+  price: Number,
+  description: {
+    type: String,
+    default: null,
+  },
 });
 
 const cashModel = mongoose.model("cashModel", cashSchema);

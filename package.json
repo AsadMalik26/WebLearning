@@ -1,5 +1,5 @@
 {
     "scripts": {
-        "start": "node ./Node/MongoDB/expressapp/app"
+        "start": "nodemon ./Node/MongoDB/expressapp/app"
       }
 }
