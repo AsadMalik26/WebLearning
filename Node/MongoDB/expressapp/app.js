@@ -10,7 +10,7 @@ app.use(express.urlencoded());
 const food = ["kabab", "nihari", "daal rice"];
 app.use(cors());
 const {
-  createEntry,  
+  createEntry,
   getAllEntries,
   getOneEntry,
   deleteEntry,
@@ -19,10 +19,13 @@ const {
 const cashModel = require("./dbmodels");
 
 mongoose
-  .connect("mongodb://127.0.0.1/testdb", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(
+    "mongodb+srv://Asadm26:OpenCode.mdbA26@clustera26.zhmri.mongodb.net/JQAPI?retryWrites=true&w=majority",
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
+  )
   .then(async () => {
     console.log("Connected with mongodb");
     /* let e = await createEntry("Testing for Asim",300,"abcdefg"); 
