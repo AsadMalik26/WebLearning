@@ -1,4 +1,5 @@
 $(function () {
+  console.log("Port Assigning");
   var port = "https://asad26.herokuapp.com/Node/MongoDB/expressapp/";
   loadRecipie();
   $("#recipie").on("click", ".btn-danger", handleDelete);
@@ -17,8 +18,10 @@ $(function () {
       description: description,
     };
 
+    console.log("PUT Requesting");
     $.ajax({
       url: port + "/api/expense/" + id,
+
       method: "PUT",
       data: obj,
       type: JSON,
@@ -32,6 +35,7 @@ $(function () {
 });
 
 function handleUpdate() {
+  console.log("Edit Clicked - Requesting");
   console.log("edit clicked");
   var btn = $(this);
   var parentDiv = btn.closest(".recipie");
@@ -56,6 +60,7 @@ function addRecipie() {
     description: description,
   };
   console.log(data);
+  console.log("POST data - Requesting");
   $.ajax({
     url: port + "/api/expense",
     method: "POST",
@@ -79,6 +84,7 @@ function handleDelete() {
   var parentDiv = btn.closest(".recipie");
   let id = parentDiv.attr("data-id");
   console.log(id);
+  console.log("Delete Data - Requesting");
   $.ajax({
     url: port + "/api/expense/" + id,
     method: "DELETE",
@@ -95,6 +101,7 @@ function handleDelete() {
   // console.log("handle Delete");
 } //end handleDelete()
 function loadRecipie() {
+  console.log("Get Loading data - Requesting");
   $.ajax({
     url: port + "/api/expense",
     method: "GET",
