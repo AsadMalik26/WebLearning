@@ -1,4 +1,5 @@
 $(function () {
+  var port = "https://asad26.herokuapp.com/Node/MongoDB/expressapp/";
   loadRecipie();
   $("#recipie").on("click", ".btn-danger", handleDelete);
   $("#recipie").on("click", ".btn-warning", handleUpdate);
@@ -17,7 +18,7 @@ $(function () {
     };
 
     $.ajax({
-      url: "https://asad26.herokuapp.com/api/expense/" + id,
+      url: port + "/api/expense/" + id,
       method: "PUT",
       data: obj,
       type: JSON,
@@ -35,7 +36,7 @@ function handleUpdate() {
   var btn = $(this);
   var parentDiv = btn.closest(".recipie");
   let id = parentDiv.attr("data-id");
-  $.get("https://asad26.herokuapp.com/api/expense/" + id, function (response) {
+  $.get(port + "/api/expense/" + id, function (response) {
     $("#updateID").val(response._id);
     $("#updateTitle").val(response.title);
     $("#updatePrice").val(response.price);
@@ -56,7 +57,7 @@ function addRecipie() {
   };
   console.log(data);
   $.ajax({
-    url: "https://asad26.herokuapp.com/api/expense",
+    url: port + "/api/expense",
     method: "POST",
     data: data,
     type: JSON,
@@ -79,7 +80,7 @@ function handleDelete() {
   let id = parentDiv.attr("data-id");
   console.log(id);
   $.ajax({
-    url: "https://asad26.herokuapp.com/api/expense/" + id,
+    url: port + "/api/expense/" + id,
     method: "DELETE",
     error: function () {
       var recipie = $("#recipie");
@@ -95,7 +96,7 @@ function handleDelete() {
 } //end handleDelete()
 function loadRecipie() {
   $.ajax({
-    url: "https://asad26.herokuapp.com/api/expense",
+    url: port + "/api/expense",
     method: "GET",
     success: function (response) {
       console.log(response);
