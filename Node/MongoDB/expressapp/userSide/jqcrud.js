@@ -1,7 +1,7 @@
 // const port = process.env.PORT || 3000;
 //var port = "http://localhost:3000";
-var port = "https://asad26.herokuapp.com/Node/MongoDB/expressapp";
-console.log("Port Assigning" , port);
+var port = "https://asad26.herokuapp.com/Node/MongoDB/expressapp/app:3000";
+console.log("Port Assigning", port);
 $(function () {
   loadRecipie();
   $("#recipie").on("click", ".btn-danger", handleDelete);
@@ -105,7 +105,7 @@ function handleDelete() {
 function loadRecipie() {
   console.log("Get Loading data - Requesting");
   $.ajax({
-    url: "http://localhost:3000" + "/api/expense",
+    url: port + "/api/expense",
     method: "GET",
     success: function (response) {
       console.log(response);

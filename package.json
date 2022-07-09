@@ -1,10 +1,7 @@
 {
   
     "scripts": {
-      "start": "concurrently --kill-others \"npm run express\" \"npm run PUG-Q3\"",
-        //"PUG-Q3": "nodemon ./PUG/myPugApp/bin/www",
-         "express": "nodemon ./Node/MongoDB/expressapp/app"
-       
+       "start": "nodemon ./Node/MongoDB/expressapp/app"
     },
      
     "devDependencies": {
@@ -12,3 +9,5 @@
     }
     
 }
+
+
